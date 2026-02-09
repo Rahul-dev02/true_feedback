@@ -11,8 +11,18 @@ const UsernmaeQuerySchema=z.object({
 })
 
 
-
 export async function GET(request:Request){
+
+    // TODO  : use this in  all other routes  
+    if(request.method !== "GET"){
+        return Response.json({
+            success:false,
+            message:"Method not allow ."
+        },{
+            status:405
+        })
+    }
+
     await dbConnect();
 
     try {
